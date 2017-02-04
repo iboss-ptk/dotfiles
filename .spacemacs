@@ -31,13 +31,18 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     csv
+     html
      clojure
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     spacemacs-ui-visual
+     spacemacs-layouts
      helm
+     shell
      auto-completion
      better-defaults
      emacs-lisp
@@ -55,7 +60,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(evil-nerd-commenter rainbow-delimiters)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -221,7 +226,7 @@ values."
    dotspacemacs-loading-progress-bar t
    ;; If non nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
-   dotspacemacs-fullscreen-at-startup nil
+   dotspacemacs-fullscreen-at-startup t
    ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
    ;; Use to disable fullscreen animations in OSX. (default nil)
    dotspacemacs-fullscreen-use-non-native nil
@@ -256,11 +261,11 @@ values."
    dotspacemacs-folding-method 'evil
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
-   dotspacemacs-smartparens-strict-mode nil
+   dotspacemacs-smartparens-strict-mode t
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
    ;; over any automatically added closing parenthesis, bracket, quote, etc…
    ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
-   dotspacemacs-smart-closing-parenthesis nil
+   dotspacemacs-smart-closing-parenthesis t
    ;; Select a scope to highlight delimiters. Possible values are `any',
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
    ;; emphasis the current one). (default 'all)
@@ -304,8 +309,26 @@ you should place your code here."
   ;; change to normal mode using 'jk'
   (setq-default evil-escape-key-sequence "jk")
 
+  ;; using zsh as default shell
+  (setq multi-term-program "/usr/bin/zsh")
+
   ;; enable line number
   (global-linum-mode)
+
+  ;; enable electric pair mode
+  (electric-pair-mode)
+
+  ;; highlight matching parenthesis
+  (show-paren-mode)
+
+  ;; key bindings for evilnc
+  (global-set-key (kbd "C-;") 'evilnc-comment-or-uncomment-lines)
+  (global-set-key (kbd "C-c l") 'evilnc-quick-comment-or-uncomment-to-the-line)
+  (global-set-key (kbd "C-c c") 'evilnc-copy-and-comment-lines)
+  (global-set-key (kbd "C-c p") 'evilnc-comment-or-uncomment-paragraphs)
+
+  ;; enable rainbow parenthesis in every programming mode
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
   ;; using clojure fancy symbol
   (setq clojure-enable-fancify-symbols t))
@@ -319,7 +342,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (smeargle orgit org mwim mmm-mode markdown-toc markdown-mode magit-gitflow helm-gitignore request helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor diff-hl company-statistics company clojure-snippets auto-yasnippet auto-dictionary ac-ispell auto-complete clj-refactor inflections edn multiple-cursors paredit yasnippet s peg cider-eval-sexp-fu eval-sexp-fu highlight cider seq spinner queue clojure-mode which-key use-package pcre2el macrostep hydra help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx flx helm-descbinds helm-ag exec-path-from-shell evil-visualstar evil-escape evil goto-chg undo-tree elisp-slime-nav diminish bind-map bind-key auto-compile packed dash ace-window ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme))))
+    (spaceline powerline popwin neotree hl-todo golden-ratio fill-column-indicator fancy-battery xterm-color shell-pop persp-mode org-projectile org-present org-pomodoro alert log4e gntp org-download multi-term htmlize gnuplot eyebrowse eshell-z eshell-prompt-extras esh-help csv-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data rainbow-delimiters typit mmt pacmacs f dash-functional 2048-game evil-nerd-commenter smeargle orgit org mwim mmm-mode markdown-toc markdown-mode magit-gitflow helm-gitignore request helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor diff-hl company-statistics company clojure-snippets auto-yasnippet auto-dictionary ac-ispell auto-complete clj-refactor inflections edn multiple-cursors paredit yasnippet s peg cider-eval-sexp-fu eval-sexp-fu highlight cider seq spinner queue clojure-mode which-key use-package pcre2el macrostep hydra help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx flx helm-descbinds helm-ag exec-path-from-shell evil-visualstar evil-escape evil goto-chg undo-tree elisp-slime-nav diminish bind-map bind-key auto-compile packed dash ace-window ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
