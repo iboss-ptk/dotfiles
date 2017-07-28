@@ -31,10 +31,12 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     javascript
      yaml
      csv
      html
      clojure
+     scala
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -49,6 +51,7 @@ values."
      emacs-lisp
      git
      markdown
+     parinfer
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -61,7 +64,9 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(evil-nerd-commenter rainbow-delimiters)
+   dotspacemacs-additional-packages '(evil-nerd-commenter
+                                      evil-easymotion
+                                      rainbow-delimiters)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -297,6 +302,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq-default evil-escape-key-sequence "jk")
   )
 
 (defun dotspacemacs/user-config ()
@@ -307,9 +313,15 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-  ;; persiting emacs server
-  (setq-default dotspacemacs-persistent-server t)
- 
+  ;; bind easymotion
+  (evilem-default-keybindings "SPC")
+
+  ;; set evilem (which wraps avy) bg become gray when use
+  (setq avy-background t)
+
+  ;; enligthen mode for cider
+  (setq cider-enlighten-mode f)
+
   ;; change to normal mode using 'jk'
   (setq-default evil-escape-key-sequence "jk")
 
@@ -346,7 +358,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yaml-mode spaceline powerline popwin neotree hl-todo golden-ratio fill-column-indicator fancy-battery xterm-color shell-pop persp-mode org-projectile org-present org-pomodoro alert log4e gntp org-download multi-term htmlize gnuplot eyebrowse eshell-z eshell-prompt-extras esh-help csv-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data rainbow-delimiters typit mmt pacmacs f dash-functional 2048-game evil-nerd-commenter smeargle orgit org mwim mmm-mode markdown-toc markdown-mode magit-gitflow helm-gitignore request helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor diff-hl company-statistics company clojure-snippets auto-yasnippet auto-dictionary ac-ispell auto-complete clj-refactor inflections edn multiple-cursors paredit yasnippet s peg cider-eval-sexp-fu eval-sexp-fu highlight cider seq spinner queue clojure-mode which-key use-package pcre2el macrostep hydra help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx flx helm-descbinds helm-ag exec-path-from-shell evil-visualstar evil-escape evil goto-chg undo-tree elisp-slime-nav diminish bind-map bind-key auto-compile packed dash ace-window ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme))))
+    (parinfer evil-easymotion web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc company-tern tern coffee-mode yaml-mode spaceline powerline popwin neotree hl-todo golden-ratio fill-column-indicator fancy-battery xterm-color shell-pop persp-mode org-projectile org-present org-pomodoro alert log4e gntp org-download multi-term htmlize gnuplot eyebrowse eshell-z eshell-prompt-extras esh-help csv-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data rainbow-delimiters typit mmt pacmacs f dash-functional 2048-game evil-nerd-commenter smeargle orgit org mwim mmm-mode markdown-toc markdown-mode magit-gitflow helm-gitignore request helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor diff-hl company-statistics company clojure-snippets auto-yasnippet auto-dictionary ac-ispell auto-complete clj-refactor inflections edn multiple-cursors paredit yasnippet s peg cider-eval-sexp-fu eval-sexp-fu highlight cider seq spinner queue clojure-mode which-key use-package pcre2el macrostep hydra help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx flx helm-descbinds helm-ag exec-path-from-shell evil-visualstar evil-escape evil goto-chg undo-tree elisp-slime-nav diminish bind-map bind-key auto-compile packed dash ace-window ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
