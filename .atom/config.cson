@@ -1,0 +1,58 @@
+"*":
+  core:
+    customFileTypes:
+      "source.ini": [
+        ".buckconfig"
+        ".hgrc"
+        ".flowconfig"
+      ]
+      "source.json": [
+        "BUCK.autodeps"
+      ]
+      "source.python": [
+        "BUCK"
+      ]
+    disabledPackages: [
+      "tree-view"
+    ]
+    themes: [
+      "seti-ui"
+      "seti-syntax"
+    ]
+  editor:
+    fontFamily: "Fira Code"
+    tabType: "auto"
+  elmjutsu:
+    autocompleteDescriptionDisplay: "markdown"
+    autocompleteEnabled: true
+    autocompleteFuzzyFilteringEnabled: true
+    autocompleteSnippetsEnabled: true
+    cacheDirectory: "/var/folders/j4/qgfdnlkj0vsfjj8ggcn10f7w0000gn/T/elmjutsu538157IUWLfaQhm1B"
+    globalAutocompleteEnabled: true
+    hyperclickEnabled: true
+    showSidekick: true
+    showTypesInTooltip: true
+  "exception-reporting":
+    userId: "1cd50aee-8aeb-4ac1-9e50-81b231aeb37a"
+  firacode: {}
+  "language-elm":
+    autocompleteEnabled: false
+  "linter-elm-make":
+    showInferredTypeAnnotations: true
+  "linter-ui-default":
+    panelHeight: 215
+  nuclide:
+    "atom-ide-diagnostics-ui":
+      showDiagnosticTraces: true
+    installRecommendedPackages: true
+    "nuclide-flow": {}
+    "nuclide-health":
+      toolbarJewel: "None"
+    "nuclide-remote-projects":
+      confirmServerActionOnLastProject: false
+    "nuclide-working-sets": {}
+  "seti-syntax": {}
+  "seti-ui":
+    compactView: true
+  "vim-mode-plus":
+    incrementalSearch: true
