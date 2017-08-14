@@ -261,7 +261,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers relative
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -302,8 +302,9 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  (setq-default evil-escape-key-sequence "jk")
-  )
+  ;; change to normal mode using 'jk'
+  (setq-default evil-escape-key-sequence "jk"))
+
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -322,8 +323,6 @@ you should place your code here."
   ;; enligthen mode for cider
   (setq cider-enlighten-mode f)
 
-  ;; change to normal mode using 'jk'
-  (setq-default evil-escape-key-sequence "jk")
 
   ;; using zsh as default shell
   (setq multi-term-program "/usr/bin/zsh")
@@ -344,7 +343,7 @@ you should place your code here."
   (global-set-key (kbd "C-c p") 'evilnc-comment-or-uncomment-paragraphs)
 
   ;; enable rainbow parenthesis in every programming mode
-  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+  ;; (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
   ;; using clojure fancy symbol
   (setq clojure-enable-fancify-symbols t))
