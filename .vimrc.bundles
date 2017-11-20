@@ -1,0 +1,39 @@
+" airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" tmux
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'edkolev/tmuxline.vim'
+
+" js
+Plug 'ternjs/tern_for_vim'
+Plug 'flowtype/vim-flow'
+Plug 'mxw/vim-jsx'
+
+" haskell
+" Plug 'eagletmt/ghcmod-vim'
+" Plug 'eagletmt/neco-ghc'
+
+" idris
+Plug 'idris-hackers/idris-vim'
+
+" purescript
+Plug 'purescript-contrib/purescript-vim'
+Plug 'FrigoEU/psc-ide-vim'
+
+" rust
+Plug 'rust-lang/rust.vim'
+
+" theme
+Plug 'ayu-theme/ayu-vim'
+Plug 'arcticicestudio/nord-vim'
+
+" misc
+Plug 'vim-syntastic/syntastic'
+Plug 'scrooloose/nerdtree'
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-unimpaired'
+Plug 'Yggdroot/indentLine'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/vimproc.vim', {'do' : 'make'}
