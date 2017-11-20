@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     haskell
      javascript
      yaml
      csv
@@ -314,6 +315,8 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+  (load-theme 'nord t)
+
   ;; bind easymotion
   (evilem-default-keybindings "SPC")
 
@@ -355,9 +358,15 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
+ '(custom-safe-themes
+   (quote
+    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "c4bd8fa17f1f1fc088a1153ca676b1e6abc55005e72809ad3aeffb74bd121d23" default)))
+ '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (parinfer evil-easymotion web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc company-tern tern coffee-mode yaml-mode spaceline powerline popwin neotree hl-todo golden-ratio fill-column-indicator fancy-battery xterm-color shell-pop persp-mode org-projectile org-present org-pomodoro alert log4e gntp org-download multi-term htmlize gnuplot eyebrowse eshell-z eshell-prompt-extras esh-help csv-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data rainbow-delimiters typit mmt pacmacs f dash-functional 2048-game evil-nerd-commenter smeargle orgit org mwim mmm-mode markdown-toc markdown-mode magit-gitflow helm-gitignore request helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor diff-hl company-statistics company clojure-snippets auto-yasnippet auto-dictionary ac-ispell auto-complete clj-refactor inflections edn multiple-cursors paredit yasnippet s peg cider-eval-sexp-fu eval-sexp-fu highlight cider seq spinner queue clojure-mode which-key use-package pcre2el macrostep hydra help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx flx helm-descbinds helm-ag exec-path-from-shell evil-visualstar evil-escape evil goto-chg undo-tree elisp-slime-nav diminish bind-map bind-key auto-compile packed dash ace-window ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme))))
+    (flow-minor-mode psc-ide purescript-mode nord-theme intero hlint-refactor hindent helm-hoogle haskell-snippets flycheck-haskell company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode parinfer evil-easymotion web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc company-tern tern coffee-mode yaml-mode spaceline powerline popwin neotree hl-todo golden-ratio fill-column-indicator fancy-battery xterm-color shell-pop persp-mode org-projectile org-present org-pomodoro alert log4e gntp org-download multi-term htmlize gnuplot eyebrowse eshell-z eshell-prompt-extras esh-help csv-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data rainbow-delimiters typit mmt pacmacs f dash-functional 2048-game evil-nerd-commenter smeargle orgit org mwim mmm-mode markdown-toc markdown-mode magit-gitflow helm-gitignore request helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor diff-hl company-statistics company clojure-snippets auto-yasnippet auto-dictionary ac-ispell auto-complete clj-refactor inflections edn multiple-cursors paredit yasnippet s peg cider-eval-sexp-fu eval-sexp-fu highlight cider seq spinner queue clojure-mode which-key use-package pcre2el macrostep hydra help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx flx helm-descbinds helm-ag exec-path-from-shell evil-visualstar evil-escape evil goto-chg undo-tree elisp-slime-nav diminish bind-map bind-key auto-compile packed dash ace-window ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -17,8 +17,8 @@ call SpaceVim#layers#load('lang#tmux')
 call SpaceVim#layers#load('lang#vim')
 call SpaceVim#layers#load('lang#xml')
 call SpaceVim#layers#load('checkers')
-call SpaceVim#layers#load('shell')   
-call SpaceVim#layers#load('tmux')   
+call SpaceVim#layers#load('shell')
+call SpaceVim#layers#load('tmux')
 call SpaceVim#layers#load('tools#screensaver')
 let g:spacevim_enable_vimfiler_welcome = 1
 let g:spacevim_enable_debug = 1
@@ -34,8 +34,14 @@ endif
 let g:clang2_placeholder_next = ''
 let g:clang2_placeholder_prev = ''
 
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
 " js eslint and flow
 let g:spacevim_custom_plugins = [
+        \ ['ayu-theme/ayu-vim'],
+        \ ['w0rp/ale'],
+        \ ['ElmCast/elm-vim'],
         \ ['flowtype/vim-flow',       { 'on_ft' : 'javascript'}],
         \ ['tpope/vim-salve',         { 'on_ft' : ['clojure', 'clojurescript']}],
         \ ['tpope/vim-dispatch',      { 'on_ft' : ['clojure', 'clojurescript']}],
@@ -43,11 +49,37 @@ let g:spacevim_custom_plugins = [
         \ ['tpope/vim-fireplace',     { 'on_ft' : ['clojure', 'clojurescript']}],
         \ ]
 
-" eslint setup
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_javascript_eslint_exe = $PWD .'/../node_modules/.bin/eslint'
 
-let g:spacevim_colorscheme = 'hybrid_reverse'
+" IndentLine {{
+let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_setColors = 0
+" }}
+
+" eslint setup
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+let g:airline#extensions#ale#enabled = 1
+let g:ale_emit_conflict_warnings = 0
+nmap <silent> <C-q> <Plug>(ale_previous_wrap)
+nmap <silent> <C-w> <Plug>(ale_next_wrap)
+
+" theme
+set termguicolors
+let ayucolor="dark"   " for dark version of theme
+" let g:spacevim_colorscheme = 'hybrid_reverse'
+let g:spacevim_colorscheme = 'ayu'
+
+" elm related config
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+
+let g:elm_syntastic_show_warnings = 1
+
+" set fold for programming
+set foldmethod=marker
+set foldmarker={,}
+set foldnestmax=1
 
 " copy and paste to system clipboard
 vmap <Leader>y "+y
